@@ -86,3 +86,34 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [Supertest Documentation](https://github.com/visionmedia/supertest)
 - [Cypress Documentation](https://docs.cypress.io/)
 - [MongoDB Testing Best Practices](https://www.mongodb.com/blog/post/mongodb-testing-best-practices) 
+
+## Testing Strategy & Debugging Approach
+
+### Testing Strategy
+- **Unit Tests:** Written for both client (React components, utilities) and server (utilities, middleware) using Jest and React Testing Library. Located in `client/src/tests/unit/` and `server/tests/unit/`.
+- **Integration Tests:** Test component interactions and API endpoints. Client integration tests are in `client/src/tests/integration/`, server integration tests in `server/tests/integration/` using Supertest and in-memory MongoDB.
+- **End-to-End (E2E) Tests:** Cypress is used for E2E tests, located in `client/cypress/integration/`, simulating real user flows.
+- **Coverage:** Aim for at least 70% code coverage. Run `npm test` or `npm run test:unit`/`test:integration`/`test:e2e` as needed.
+
+### Debugging Approach
+- **Server:**
+  - Global error handler middleware logs errors and returns structured responses.
+  - Logger middleware logs all incoming requests.
+  - Use `console.log` and stack traces for debugging during development.
+- **Client:**
+  - ErrorBoundary component wraps the app to catch and display UI errors.
+  - Use browser developer tools (Console, React DevTools) for inspecting state and errors.
+- **General:**
+  - Test failures and stack traces are used to quickly identify and fix issues.
+  - All errors are handled gracefully to avoid crashing the app.
+
+### How to Run Tests
+- **Unit/Integration:**
+  - `npm test` or `npm run test:unit`/`test:integration` (see package.json scripts)
+- **E2E:**
+  - Start the client app, then run `npx cypress open` in the client directory
+
+### Screenshots
+- Add screenshots of your test coverage reports here after running tests.
+
+--- 
